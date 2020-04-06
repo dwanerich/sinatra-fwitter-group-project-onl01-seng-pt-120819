@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
-      erb :'/users/sign_up'
+      erb :'/users/signup'
     else
       redirect to '/tweets'
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if !logged_in?
-      erb :'users/login'
+      erb :'/login'
     else
       redirect to '/tweets'
     end
