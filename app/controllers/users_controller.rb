@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  
+  
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
     erb :'users/show'
@@ -6,14 +8,14 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
-      erb :'users/sign_up', locals: {message: "Sign up First"}
+      erb :'/users/sign_up'
     else
       redirect to '/tweets'
     end
   end
 
   post '/signup' do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect to '/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
